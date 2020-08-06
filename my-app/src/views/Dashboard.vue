@@ -1,29 +1,42 @@
 <template>
   <div class="dashboard">
     <h1 class="subheading grey--text">Dashboard</h1>
-
+    <!-- tooltip -->
     <v-container class="my-5">
       <v-layout row justify-start class=" mb-3">
-        <v-btn
-          small
-          flat
-          color="grey"
-          @click="sortBy('title')"
-          slot="activator"
-        >
-          <v-icon small left>mdi-folder</v-icon>
-          <span class="caption text-lowercase"> By project name </span>
-        </v-btn>
-        <v-btn
-          small
-          flat
-          color="grey"
-          @click="sortBy('person')"
-          slot="activator"
-        >
-          <v-icon small left>mdi-account</v-icon>
-          <span class="caption text-lowercase">By Person</span>
-        </v-btn>
+        <v-tooltip top>
+          <template v-slot:activator="{on, attrs}">
+          <v-btn
+            small
+            flat
+            color="grey"
+            @click="sortBy('title')"
+            v-bind="attrs"
+            v-on="on"
+          >
+            <v-icon small left>mdi-folder</v-icon>
+            <span class="caption text-lowercase"> By project name </span>
+          </v-btn>
+         
+          </template >
+           <span>Sort by project name</span>
+        </v-tooltip>
+        <v-tooltip top>
+          <template v-slot:activator="{on, attrs}">
+          <v-btn
+            small
+            flat
+            color="grey"
+            @click="sortBy('person')"
+            v-bind="attrs"
+            v-on="on"
+          >
+            <v-icon small left>mdi-account</v-icon>
+            <span class="caption text-lowercase">By Person</span>
+          </v-btn>
+          </template>
+          <span>Sort by project's author</span>
+        </v-tooltip>
       </v-layout>
 
       <!-- v-card & v-layout & v-chip -->
@@ -64,7 +77,7 @@ export default {
       projects: [
         {
           title: "Design a new website",
-          person: "The Net Ninja",
+          person: "ZweGyi",
           due: "1st Jan 2019",
           status: "ongoing",
           content:
@@ -72,7 +85,7 @@ export default {
         },
         {
           title: "Code up the homepage",
-          person: "Zwe Gyi",
+          person: "Ninja",
           due: "10th Jan 2019",
           status: "complete",
           content:
