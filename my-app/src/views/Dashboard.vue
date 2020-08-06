@@ -9,7 +9,7 @@
           <v-btn
             small
             flat
-            color="grey"
+            color="green"
             @click="sortBy('title')"
             v-bind="attrs"
             v-on="on"
@@ -26,7 +26,7 @@
           <v-btn
             small
             flat
-            color="grey"
+            color="green"
             @click="sortBy('person')"
             v-bind="attrs"
             v-on="on"
@@ -132,14 +132,14 @@ export default {
 }
 
 .v-chip.complete {
-  background: #3cd1c2;
+  background: #3cd1c2 !important;
 }
 
 .v-chip.ongoing {
-  background: #ffaa2c;
+  background: #ffaa2c !important;
 }
 
 .v-chip.overdue {
-  background: #f83e70;
+  background: #f83e70 !important;
 }
 </style>

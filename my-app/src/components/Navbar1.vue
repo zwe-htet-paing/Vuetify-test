@@ -1,19 +1,19 @@
 <template>
   <div>
     <!-- add navigation bar -->
-    <v-app-bar flat app>
+    <v-app-bar flat app color="yellow">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title class="text-uppercase grey--text">
-        <span class="font-weight-light">Todo</span>
+        <span class="font-weight-light">Mr.</span>
         <span>ZweGyi</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
 
       <!--drop-down menu -->
-      <v-menu offset-y>
+      <v-menu flat offset-y>
             <template v-slot:activator="{ on, attrs }">
-              <v-btn  
-                color="grey"
+              <v-btn  flat
+                color="white"
                 v-bind="attrs"
                 v-on="on"
               >
@@ -33,7 +33,7 @@
             </v-list>
           </v-menu>
 
-      <v-btn flat color="grey">
+      <v-btn flat class="white lighten-4">
         <span>Sign out</span>
         <v-icon right>mdi-exit-to-app</v-icon>
       </v-btn>

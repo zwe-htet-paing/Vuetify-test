@@ -1,5 +1,5 @@
 <template>
-  <v-app class="grey lighten-4">
+  <v-app class="yellow lighten-4">
     <Navbar />
     <v-main>
       <!-- Provides the application the proper gutter -->
