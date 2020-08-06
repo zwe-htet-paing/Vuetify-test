@@ -48,6 +48,10 @@
           </v-avatar>
           <p class="white--text subheading mt-1">ZweGyi</p>
         </v-flex>
+        <!-- Popup -->
+        <v-flex class="mt-4 mb-3"> 
+          <Popup />
+        </v-flex>
       </v-layout>
       <v-list>
         <v-list-item
@@ -71,7 +75,10 @@
 </template>
 
 <script>
+import Popup from './Popup'
+
 export default {
+  components: { Popup },
   data() {
     return {
       drawer: false,
