@@ -8,7 +8,7 @@
           <template v-slot:activator="{on, attrs}">
           <v-btn
             small
-            flat
+            text
             color="green"
             @click="sortBy('title')"
             v-bind="attrs"
@@ -25,7 +25,7 @@
           <template v-slot:activator="{on, attrs}">
           <v-btn
             small
-            flat
+            text
             color="green"
             @click="sortBy('person')"
             v-bind="attrs"
