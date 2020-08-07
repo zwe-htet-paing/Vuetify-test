@@ -62,7 +62,8 @@
               </v-row>
             </v-container>
             <v-spacer></v-spacer>
-            <v-btn text @click="submit" class="success mx-0 mt-3"
+            <!-- add button loader with :loading-->
+            <v-btn text @click="submit" class="success mx-0 mt-3" :loading="loading"
               >Add Project</v-btn
             >
             <v-btn text @click="clear" class="success mx-0 mt-3">Clear</v-btn>
@@ -77,9 +78,10 @@
 </template>
 
 <script>
-import moment from "moment";
+import moment from "moment"
 //import  format from 'date-fns'
-//import db from '@/fb';
+import db from '@/fb'
+
 
 export default {
   data: () => ({
@@ -89,6 +91,7 @@ export default {
     menu: false,
     date: null,
     selectedDate: null,
+    loading: false,
     //date:  new Date().toISOString().substr(0, 10),
     //dateFormatted: vm.formatDate(new Date().toISOString().substr(0, 10)),
     inputRules: [
@@ -100,27 +103,29 @@ export default {
   methods: {
     submit() {
       if(this.$refs.form.validate()) {
-        // const project = { 
-        //   title: this.title,
-        //   content: this.content,
-        //   due: this.selectedDate,
-        //   person: 'The Net Ninja',
-        //   status: 'ongoing'
-        // }
-        // db.collection('projects').add(project).then(() => {
-        //   console.log('added to db')
-        // })
+        this.loading = true;
+        const project = { 
+          title: this.title,
+          content: this.content,
+          due: this.selectedDate,
+          person: 'The Net Ninja',
+          status: 'ongoing'
+        }
+        db.collection('projects').add(project).then(() => {
+          this.loading = false;
+          this.dialog = false;
+        })
       }
-    },
-    clear() {
-      (this.title = ""), (this.content = ""), (this.data = "");
-    },
+    },   
     closeDateMenu() {
       this.menu = false;
       //this.selectedDate= this.date ? moment(this.date).format('dddd, MMMM Do YYYY') : '';
       this.selectedDate = this.date
         ? moment(this.date).format("Do MMM YYYY")
         : "";
+    },
+    clear() {
+      (this.title = ""), (this.content = ""), (this.data = "");
     },
     //   formatDate(date) {
     //     if (!date) return null;
@@ -136,9 +141,7 @@ export default {
     //   },
   },
   computed: {
-    // formattedDate() {
-    //   return this.formatDate(this.date);
-    // },
+    
     formattedDue() {
       console.log(this.date);
       return this.date
@@ -149,6 +152,9 @@ export default {
     // computedDateFormattedDatefns () {
     //     return this.date ? format(this.date, 'EEEE, MMMM do yyyy') : ''
     //   },
+    // formattedDate() {
+    //   return this.formatDate(this.date);
+    // },
   },
 };
 </script>
