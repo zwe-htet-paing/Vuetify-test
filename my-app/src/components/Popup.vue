@@ -25,6 +25,7 @@
               prepend-icon="mdi-file-edit"
               :rules="inputRules"
             ></v-textarea>
+
             <!-- Date picker start -->
             <v-container>
               <v-row>
@@ -108,12 +109,13 @@ export default {
           title: this.title,
           content: this.content,
           due: this.selectedDate,
-          person: 'The Net Ninja',
+          person: 'ZweGyi',
           status: 'ongoing'
         }
         db.collection('projects').add(project).then(() => {
           this.loading = false;
           this.dialog = false;
+          this.$emit('projectAdded')
         })
       }
     },   

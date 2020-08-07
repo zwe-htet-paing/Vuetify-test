@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Navbar from "./components/Navbar1";
+import Navbar from "./components/Navbar";
 
 export default {
   name: "App",
