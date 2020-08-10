@@ -1,5 +1,6 @@
 <template>
   <v-app class="yellow lighten-4">
+    <!-- Display navbar -->
     <Navbar />
     <v-main>
       <!-- Provides the application the proper gutter -->
@@ -14,7 +15,7 @@
 </template>
 
 <script>
-import Navbar from "./components/Navbar";
+import Navbar from "@/components/Navbar";
 
 export default {
   name: "App",

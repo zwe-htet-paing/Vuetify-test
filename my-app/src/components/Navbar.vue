@@ -7,14 +7,34 @@
     </v-snackbar>
 
 
-    <!-- add navigation bar -->
+    <!-- display the navigation bar -->
     <v-app-bar flat app color="yellow">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title class="text-uppercase grey--text">
         <span class="font-weight-light">Mr.</span>
         <span>ZweGyi</span>
       </v-toolbar-title>
+      <v-toolbar-items>
+          <v-btn text tag='span' style='cursor: pointer'>SHOW CASE</v-btn>
+      </v-toolbar-items>
       <v-spacer></v-spacer>
+
+      <!-- navigation bar links-->
+      <v-toolbar-items class='hidden-xs-only' v-if="!userLogedIn">
+        <v-btn text v-for="item in items" :key="item.title" :to="item.link">
+          <v-icon left>{{ item.icon }}</v-icon> 
+          <span>{{item.title}} </span>
+        </v-btn>
+      </v-toolbar-items>
+      <!-- sign out button -->
+      <v-toolbar-items class='hidden-xs-only' v-else>
+        <v-btn
+          text
+          @click='logoutFromFirebase'
+          >
+          <v-icon left>mdi-logout-variant</v-icon>Logout
+        </v-btn>
+      </v-toolbar-items>
 
       <!--drop-down menu -->
       <v-menu flat offset-y>
@@ -36,12 +56,12 @@
           </v-list-item>
         </v-list>
       </v-menu>
-      <template > 
+      <!-- <template > 
         <v-btn text color="grey">
           <span>Sign out</span>
           <v-icon right>mdi-exit-to-app</v-icon>
         </v-btn>
-      </template>
+      </template> -->
     </v-app-bar>
 
     <!-- add left navigation drawer-->
@@ -96,8 +116,24 @@ export default {
         { icon: "mdi-calendar-range", text: "Calendar", route: "/calendar" },
         { icon: "mdi-table-heart", text: "Datatable", route: "/datatable" },
       ],
-      snackbar : true,
+      snackbar : false,
+      items: [
+        {title:'Register', icon: 'mdi-face', link:'/register'},
+        {title:'Login', icon: 'mdi-lock-plus', link:'/signin'},
+     
+
+      ]
     };
   },
+  computed: {
+    userLogedIn ()  {
+      return this.$store.getters.user
+    }
+  },
+  methods: {
+    logoutFromFirebase () {
+      this.$store.dispatch('signOutAction')
+    }
+  }
 };
 </script>

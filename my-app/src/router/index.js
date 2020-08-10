@@ -5,6 +5,8 @@ import Projects from '../views/Projects.vue'
 import Team from '../views/Team.vue'
 import Calendar from '../views/Calendar.vue'
 import Datatable from '../views/Datatable.vue'
+import Register from '@/components/auth/Register.vue'
+import Signin from '@/components/auth/Signin.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +35,16 @@ Vue.use(VueRouter)
     path: '/datatable',
     name: 'datatable',
     component: Datatable
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: Register
+  },
+  {
+    path: '/signin',
+    name: 'signin',
+    component: Signin
   }
 ]
 
