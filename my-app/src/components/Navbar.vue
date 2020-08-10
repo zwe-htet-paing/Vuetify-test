@@ -15,7 +15,7 @@
         <span>ZweGyi</span>
       </v-toolbar-title>
       <v-toolbar-items>
-          <v-btn text tag='span' style='cursor: pointer'>SHOW CASE</v-btn>
+          <v-btn text tag='span' style='cursor: pointer'>TESTING</v-btn>
       </v-toolbar-items>
       <v-spacer></v-spacer>
 
@@ -39,7 +39,7 @@
       <!--drop-down menu -->
       <v-menu flat offset-y>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn text color="grey" v-bind="attrs" v-on="on">
+          <v-btn text  v-bind="attrs" v-on="on">
             <v-icon left>mdi-menu-down</v-icon>
             <span left>Menu</span>
           </v-btn>
@@ -97,11 +97,15 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+
+    
   </div>
+  
 </template>
 
 <script>
 import Popup from "./Popup";
+
 
 export default {
   components: { Popup },
